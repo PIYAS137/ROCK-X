@@ -8,31 +8,33 @@ import Services from './pages/Services/Services'
 import ViewOnePage from './pages/ViewOnePage/ViewOnePage'
 import Login from './pages/Login/Login'
 import Registration from './pages/Registration/Registration'
+import Context from './Context/Context'
+import PrivateRoute from './PrivateRoute/PrivateRoute'
 
 
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Root/>,
-    children:[
+    path: '/',
+    element: <Root />,
+    children: [
       {
-      path:'/',
-        element:<Home/>
-      },{
-        path:'/services',
-        element:<Services/>
+        path: '/',
+        element: <Home />
+      }, {
+        path: '/services',
+        element: <Services />
       },
       {
-        path:'/services/:sid',
-        element:<ViewOnePage/>
+        path: '/services/:sid',
+        element: <PrivateRoute><ViewOnePage /></PrivateRoute>
       },
       {
-        path:'/login',
-        element:<Login/>
-      },{
-        path:'/registration',
-        element:<Registration/>
+        path: '/login',
+        element: <Login />
+      }, {
+        path: '/registration',
+        element: <Registration />
       }
     ]
   }
@@ -42,6 +44,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <Context>
+      <RouterProvider router={router}></RouterProvider>
+    </Context>
   </React.StrictMode>,
 )

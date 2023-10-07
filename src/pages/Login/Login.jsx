@@ -1,26 +1,64 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useContext, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { AuthContext } from "../../Context/Context"
+
 
 const Login = () => {
 
+    const { LoginUser,LoginWithGoogle} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location );
+
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
-    const [err,setErr]=useState('')
+    const [err, setErr] = useState('')
 
 
 
-    const handleSubmit=(event)=>{
+    const handleSubmit = (event) => {
+
         event.preventDefault()
+        setErr('')
+
+        LoginUser(email, pass)
+            .then(res => {
+                console.log(res);
+                navigate('/')
+            }).catch(err => {
+                setErr(err.message);
+                setTimeout(()=>{
+                    setErr('')
+                },2000)
+                return
+            })
+
     }
 
-    const handleClickGogle=()=>{
-        console.log("object");
+    const handleClickGogle = () => {
+        LoginWithGoogle()
+        .then(res=>{
+            console.log(res);
+            navigate('/')
+        }).catch(err=>{
+            console.log(err);
+            setErr(err.message);
+            setTimeout(()=>{
+                setErr('')
+            },2000)
+            return
+        })
     }
 
 
 
     return (
         <div className="hero min-h-screen">
+
+            {err && <div className="max-w-xl z-50 top-20 left-20 text-white text-xl absolute bg-red-500 w-full p-5 rounded-xl">
+                {err}
+            </div>}
+
             <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
                 <form onSubmit={handleSubmit} className="card-body shadow-xl rounded-2xl">
                     <h1 className="text-2xl text-center font-bold my-4 ">Log In Here</h1>
@@ -28,14 +66,14 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input onChange={e=>setEmail(e.target.value)} value={email}  name="email" type="email" placeholder="email" className="input input-bordered" required />
+                        <input onChange={e => setEmail(e.target.value)} value={email} autoFocus name="email" type="email" placeholder="email" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input onChange={e=>setPass(e.target.value)} value={pass} type="password" placeholder="password" className="input input-bordered" required />
-                        {err ? <p>{err}</p>:''}
+                        <input onChange={e => setPass(e.target.value)} value={pass} type="password" placeholder="password" className="input input-bordered" required />
+                        {err ? <p>{err}</p> : ''}
                     </div>
                     <div className="form-control mt-6 space-y-3">
                         <button className="btn btn-primary">Login</button>
@@ -47,5 +85,7 @@ const Login = () => {
         </div>
     )
 }
+
+
 
 export default Login

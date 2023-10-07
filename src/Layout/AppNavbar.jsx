@@ -1,6 +1,19 @@
+import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
+import { AuthContext } from "../Context/Context"
 
 const AppNavbar = () => {
+
+    const { user,LogOutUser } = useContext(AuthContext)
+    console.log(user);
+
+    const handleClickLogOut=()=>{
+        LogOutUser()
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+    }
+
+    
 
     const NavLinks = <>
         <li className="text-lg"><NavLink to='/'>Home</NavLink></li>
@@ -8,8 +21,8 @@ const AppNavbar = () => {
         <li className="text-lg"><NavLink to='/services'>Services</NavLink></li>
     </>
 
-  return (
-    <div className="navbar bg-gray-900 rounded-b-xl text-white">
+    return (
+        <div className="navbar bg-gray-900 rounded-b-xl text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,7 +40,12 @@ const AppNavbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'><button className="bg-white text-black px-4 py-2 rounded-lg font-semibold">Login</button></Link>
+                {
+                user ? 
+                <button onClick={handleClickLogOut} className="bg-red-500 text-white px-4 py-2 rounded-lg font-semibold">Log Out</button>
+                : 
+                <Link to='/login'><button className="bg-indigo-500 text-white px-4 py-2 rounded-lg font-semibold">Login</button></Link> 
+                }
                 <label tabIndex={0} className="btn ml-2 btn-ghost btn-circle avatar">
                     <div className="w-16 rounded-full">
                         <img src="https://i.pinimg.com/564x/f3/25/82/f325821a1450b7352ba42bb44857eefc.jpg" />
@@ -35,7 +53,7 @@ const AppNavbar = () => {
                 </label>
             </div>
         </div>
-  )
+    )
 }
 
 export default AppNavbar
