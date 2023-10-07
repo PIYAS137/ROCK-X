@@ -4,6 +4,9 @@ import { Link } from "react-router-dom"
 
 
 const OneCard = ({data}) => {
+
+
+
   return (
     <div className="card text-black card-compact w-96 bg-base-100 shadow-xl">
             <figure><img src={data.image} alt="Shoes" /></figure>
@@ -20,7 +23,7 @@ const OneCard = ({data}) => {
 }
 
 OneCard.propTypes={
-  data:PropTypes.node
+  data:PropTypes.object
 }
 
 

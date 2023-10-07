@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../Context/Context"
 
 const specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
@@ -9,6 +9,7 @@ const capitalLetterRegex = /[A-Z]/;
 
 const Registration = () => {
 
+    const location = useLocation()
     const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -52,7 +53,7 @@ const Registration = () => {
         createUser(email, pass)
             .then(res => {
                 console.log(res);
-                navigate('/')
+                navigate(location?.state ? location.state : '/')
             }).catch(err => {
                 setErr(err.message)
                 setTimeout(() => {

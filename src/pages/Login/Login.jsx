@@ -6,8 +6,9 @@ import { AuthContext } from "../../Context/Context"
 const Login = () => {
 
     const { LoginUser,LoginWithGoogle} = useContext(AuthContext)
-    const navigate = useNavigate()
     const location = useLocation()
+    console.log(location);
+    const navigate = useNavigate()
     console.log(location );
 
     const [email, setEmail] = useState('')
@@ -24,7 +25,7 @@ const Login = () => {
         LoginUser(email, pass)
             .then(res => {
                 console.log(res);
-                navigate('/')
+                navigate(location?.state ? location.state : '/')
             }).catch(err => {
                 setErr(err.message);
                 setTimeout(()=>{
@@ -39,7 +40,7 @@ const Login = () => {
         LoginWithGoogle()
         .then(res=>{
             console.log(res);
-            navigate('/')
+            navigate(location?.state ? location.state : '/')
         }).catch(err=>{
             console.log(err);
             setErr(err.message);
@@ -79,7 +80,7 @@ const Login = () => {
                         <button className="btn btn-primary">Login</button>
                         <button onClick={handleClickGogle} className="btn btn-primary">Login With Google</button>
                     </div>
-                    <p>Dont have an account ? Go for <Link to='/registration'><span className="font-semibold text-blue-500">Register</span></Link></p>
+                    <p>Dont have an account ? Go for <Link state={location.state} to='/registration'><span className="font-semibold text-blue-500">Register</span></Link></p>
                 </form>
             </div>
         </div>
