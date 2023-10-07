@@ -10,6 +10,7 @@ import Login from './pages/Login/Login'
 import Registration from './pages/Registration/Registration'
 import Context from './Context/Context'
 import PrivateRoute from './PrivateRoute/PrivateRoute'
+import Contact from './pages/Contact/Contact'
 
 
 
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
-      }, {
+      },
+      {
         path: '/services',
         element: <Services />
       },
@@ -32,9 +34,14 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
-      }, {
+      },
+      {
         path: '/registration',
         element: <Registration />
+      },
+      {
+        path:'/contact',
+        element:<Contact/>
       }
     ]
   }

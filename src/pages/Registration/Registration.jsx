@@ -69,7 +69,7 @@ const Registration = () => {
     return (
         <div className="hero min-h-screen">
 
-            {err && <div className="max-w-xl z-50 top-20 left-20 text-white text-xl absolute bg-red-500 w-full p-5 rounded-xl">
+            {err && <div className="max-w-xl z-50 top-20 text-white text-xl absolute bg-red-500 w-full p-5 rounded-xl">
                 {err}
             </div>}
 

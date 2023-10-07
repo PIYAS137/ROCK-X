@@ -7,9 +7,9 @@ const Login = () => {
 
     const { LoginUser,LoginWithGoogle} = useContext(AuthContext)
     const location = useLocation()
-    console.log(location);
     const navigate = useNavigate()
-    console.log(location );
+
+
 
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
@@ -18,7 +18,6 @@ const Login = () => {
 
 
     const handleSubmit = (event) => {
-
         event.preventDefault()
         setErr('')
 
@@ -56,7 +55,7 @@ const Login = () => {
     return (
         <div className="hero min-h-screen">
 
-            {err && <div className="max-w-xl z-50 top-20 left-20 text-white text-xl absolute bg-red-500 w-full p-5 rounded-xl">
+            {err && <div className="max-w-xl z-50 top-20 text-white text-xl absolute bg-red-500 w-full p-5 rounded-xl">
                 {err}
             </div>}
 
@@ -74,7 +73,6 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input onChange={e => setPass(e.target.value)} value={pass} type="password" placeholder="password" className="input input-bordered" required />
-                        {err ? <p>{err}</p> : ''}
                     </div>
                     <div className="form-control mt-6 space-y-3">
                         <button className="btn btn-primary">Login</button>

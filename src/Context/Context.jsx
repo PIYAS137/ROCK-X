@@ -9,8 +9,11 @@ export const AuthContext = createContext(null)
 const FirebaseAuth = getAuth(app)
 const GoogleProvider = new GoogleAuthProvider()
 
-const Context = ({ children }) => {
 
+
+
+
+const Context = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -34,19 +37,16 @@ const Context = ({ children }) => {
         const status = onAuthStateChanged(FirebaseAuth, (currentUser) => {
             setLoading(false)
             setUser(currentUser)
-            console.log(currentUser);
         })
-        return ()=>{
+        return () => {
             status()
         }
     }, [])
-
 
     const LoginWithGoogle = () => {
         setLoading(true)
         return signInWithPopup(FirebaseAuth, GoogleProvider)
     }
-
 
     const AuthInfo = {
         createUser,

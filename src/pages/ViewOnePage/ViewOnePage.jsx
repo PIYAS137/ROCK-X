@@ -8,17 +8,24 @@ const ViewOnePage = () => {
   const navigate = useNavigate()
   const [datas, setDatas] = useState(MyServicesDatas)
   const [data, setData] = useState([]);
+  const [toastText,setToastText]=useState('')
 
 
   useEffect(() => {
     const temp = datas.filter(one => one.id === parseInt(sid.sid))
     setData(temp[0]);
   }, [])
-  console.log(data);
 
 
   const handleClickBack=()=>{
     navigate(-1)
+  }
+
+  const handleClick=(val)=>{
+    setToastText("Your apply is submited ! We will contact you as soon as possible !")
+    setTimeout(()=>{
+      setToastText('')
+    },2000)
   }
 
 
@@ -27,6 +34,7 @@ const ViewOnePage = () => {
   return (
     <div className=" h-screen ">
       <h1 className="py-3 my-10 text-center text-5xl font-bold italic">{data.title}</h1>
+      {toastText && <div className="max-w-xl z-50 top-20 text-white text-xl absolute bg-green-600 w-full p-5 rounded-xl">{toastText}</div>}
       <div className="flex">
         <div className="w-[40%]  text-lg flex justify-center flex-col items-start space-y-3">
           <ul className="">
@@ -39,7 +47,7 @@ const ViewOnePage = () => {
           </ul>
           <p className="font-semibold text-xl">Service Duration : <span className="font-bold">{data.service_duration}</span></p>
           <p className="font-semibold text-xl">Price : <span className="font-bold">${data.price}</span></p>
-          <button className="btn bg-orange-500 text-white">Book Now</button>
+          <button onClick={()=>{handleClick(data.title)}} className="btn hover:bg-orange-600 bg-orange-500 text-white">Book Now</button>
 
         </div>
         <div className="w-[60%] ">
