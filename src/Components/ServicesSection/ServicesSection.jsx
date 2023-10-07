@@ -10,7 +10,7 @@ const ServicesSection = () => {
 
   return (
     <div className="">
-        <h1 className="text-center text-5xl py-20 font-bold mt-10">Our Services</h1>
+        <h1 className="text-center text-5xl py-20 font-bold">Our Services</h1>
         <div className="grid grid-cols-3 gap-10">
           {
             cards.map((one)=><OneCard key={one.id} data={one}/>)

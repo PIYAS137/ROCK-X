@@ -9,7 +9,7 @@ const AppNavbar = () => {
     </>
 
   return (
-    <div className="navbar bg-gray-900 rounded-b-xl text-white mb-10">
+    <div className="navbar bg-gray-900 rounded-b-xl text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,7 +27,7 @@ const AppNavbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link><button className="bg-white text-black px-4 py-2 rounded-lg font-semibold">Login</button></Link>
+                <Link to='/login'><button className="bg-white text-black px-4 py-2 rounded-lg font-semibold">Login</button></Link>
                 <label tabIndex={0} className="btn ml-2 btn-ghost btn-circle avatar">
                     <div className="w-16 rounded-full">
                         <img src="https://i.pinimg.com/564x/f3/25/82/f325821a1450b7352ba42bb44857eefc.jpg" />
