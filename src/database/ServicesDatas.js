@@ -1,4 +1,4 @@
-[
+export const MyServicesDatas=[
     {
         "id": 1,
         "title": "Event Planning",
@@ -11,7 +11,7 @@
             "Managing all logistics and timelines for a stress-free event",
             "Providing on-site support to handle any unexpected issues"
         ],
-        "image": "https://i.pinimg.com/564x/5f/96/8f/5f968f3a7f4ef108a7ed968b1d3bf121.jpg"
+        "image": "https://i.ibb.co/r0ZN3FW/Opportunities-in-events-planning.jpg"
     },
     {
         "id": 2,
@@ -25,7 +25,7 @@
             "Customized ticket design and branding",
             "Real-time attendee tracking and reporting"
         ],
-        "image": "https://i.pinimg.com/564x/5f/96/8f/5f968f3a7f4ef108a7ed968b1d3bf121.jpg"
+        "image": "https://i.ibb.co/cNz4fyd/Event-Registration-Everything-You-Need-To-Know-About-Ticketing-for-Events-16x9.webp"
     },
     {
         "id": 3,
@@ -39,7 +39,7 @@
             "Content creation and blogging",
             "Search engine optimization (SEO) for event visibility"
         ],
-        "image": "https://i.pinimg.com/564x/5f/96/8f/5f968f3a7f4ef108a7ed968b1d3bf121.jpg"
+        "image": "https://i.ibb.co/F3wD8Gz/What-is-Marketing-Promotion-Complete-Guide-1024x576-1.jpg"
     },
     {
         "id": 4,
@@ -53,7 +53,7 @@
             "In-app notifications and updates",
             "Attendee engagement features such as polls and surveys"
         ],
-        "image": "https://i.pinimg.com/564x/5f/96/8f/5f968f3a7f4ef108a7ed968b1d3bf121.jpg"
+        "image": "https://i.ibb.co/93WjYjV/9058ee53ea49fc5f3ab041148c6634d221eee390.jpg"
     },
     {
         "id": 5,
@@ -67,7 +67,7 @@
             "Revenue tracking and reporting",
             "Financial analysis and recommendations"
         ],
-        "image": "https://i.pinimg.com/564x/5f/96/8f/5f968f3a7f4ef108a7ed968b1d3bf121.jpg"
+        "image": "https://i.ibb.co/QNNhDgJ/F5-BDC0-B12-B3076509-C267-E9-C0-CC8959-E.webp"
     },
     {
         "id": 6,
@@ -81,6 +81,6 @@
             "Integration of the artist's work into the event theme",
             "Artist coordination and logistics"
         ],
-        "image": "https://i.pinimg.com/564x/5f/96/8f/5f968f3a7f4ef108a7ed968b1d3bf121.jpg"
+        "image": "https://i.ibb.co/kBLGc0V/Ms-CVh-H7-D-ATIF5-jpg-1200x800.jpg"
     }
 ]

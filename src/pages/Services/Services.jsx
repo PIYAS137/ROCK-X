@@ -1,7 +1,10 @@
+import ServicesSection from "../../Components/ServicesSection/ServicesSection"
 
 const Services = () => {
   return (
-    <div>Services</div>
+    <>
+      <ServicesSection/>
+    </>
   )
 }
 
