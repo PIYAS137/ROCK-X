@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from "../Firebase/FirebaseConfig"
 import PropTypes from 'prop-types'
 
@@ -16,11 +16,35 @@ const GoogleProvider = new GoogleAuthProvider()
 const Context = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [logRegSucc,setLogRegSucc]=useState('');
+    const [notiSts,setNotiSts]=useState(false)
+
+
+
+    const handleLogRegSuccess=(str)=>{
+        setLogRegSucc(str);
+        setTimeout(()=>{
+            setLogRegSucc('')
+            setNotiSts(false)
+        },2000)
+    }
+
+
+
 
 
     const createUser = (email, pass) => {
         setLoading(true)
         return createUserWithEmailAndPassword(FirebaseAuth, email, pass);
+    }
+
+    const updateUser=(val,name,photo)=>{
+        console.log(name,photo);
+        setLoading(true)
+        return updateProfile(val,{
+            displayName : name,
+            photoURL:photo
+        })
     }
 
     const LoginUser = (email, pass) => {
@@ -54,7 +78,12 @@ const Context = ({ children }) => {
         user,
         LoginWithGoogle,
         LogOutUser,
-        loading
+        loading,
+        handleLogRegSuccess,
+        logRegSucc,
+        notiSts,
+        setNotiSts,
+        updateUser
     }
 
     return (

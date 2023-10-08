@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { MyServicesDatas } from "../../database/ServicesDatas";
+import { AuthContext } from "../../Context/Context";
 
 const ViewOnePage = () => {
 
@@ -9,6 +10,7 @@ const ViewOnePage = () => {
   const [datas, setDatas] = useState(MyServicesDatas)
   const [data, setData] = useState([]);
   const [toastText,setToastText]=useState('')
+  const {notiSts, logRegSucc}=useContext(AuthContext)
 
 
   useEffect(() => {
@@ -33,6 +35,10 @@ const ViewOnePage = () => {
 
   return (
     <div className=" h-screen ">
+      {notiSts && 
+      <div className="max-w-xl z-50 top-20 text-white font-bold text-xl absolute bg-green-600 w-full p-5 rounded-xl">
+        <p>{logRegSucc}</p>
+      </div>}
       <h1 className="py-3 my-10 text-center text-5xl font-bold italic">{data.title}</h1>
       {toastText && <div className="max-w-xl z-50 top-20 text-white text-xl absolute bg-green-600 w-full p-5 rounded-xl">{toastText}</div>}
       <div className="flex">

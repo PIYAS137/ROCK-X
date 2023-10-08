@@ -43,7 +43,7 @@ export const MyServicesDatas=[
     },
     {
         "id": 4,
-        "title": "Varies based on app features",
+        "title": "Varies based on app features for song release",
         "service_duration": "Customized",
         "price": "5000",
         "description": "Our customized event app development services allow you to create a unique mobile app tailored to your event. Enhance attendee engagement and provide essential event information at their fingertips.",

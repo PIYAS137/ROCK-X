@@ -5,6 +5,7 @@ import { AuthContext } from "../Context/Context"
 const AppNavbar = () => {
 
     const { user,LogOutUser } = useContext(AuthContext)
+    console.log(user);
 
     const handleClickLogOut=()=>{
         LogOutUser()
@@ -16,8 +17,8 @@ const AppNavbar = () => {
 
     const NavLinks = <>
         <li className="text-lg"><NavLink to='/'>Home</NavLink></li>
-        <li className="text-lg"><NavLink to='/contact'>Contact</NavLink></li>
         <li className="text-lg"><NavLink to='/services'>Services</NavLink></li>
+        <li className="text-lg"><NavLink to='/contact'>Contact</NavLink></li>
     </>
 
     return (
@@ -45,6 +46,7 @@ const AppNavbar = () => {
                 : 
                 <Link to='/login'><button className="bg-indigo-500 text-white px-4 py-2 rounded-lg font-semibold">Login</button></Link> 
                 }
+                <p className="ml-2 text-red-500">{user?.displayName}</p>
                 <label tabIndex={0} className="btn ml-2 btn-ghost btn-circle avatar">
                     <div className="w-16 rounded-full bg-white p-[1px]">
                         <img className=" rounded-full" src={user?.photoURL ? user.photoURL : "https://i.ibb.co/tqWTNFt/Default-avatar-icon-vector-of-social-media-user.jpg"} />

@@ -1,5 +1,8 @@
+import { useState } from "react"
 
 const GallerySection = () => {
+
+    const [seeAll,setSeeAll]=useState(6);
 
 
     const gallery = [
@@ -25,8 +28,52 @@ const GallerySection = () => {
         {
             id: 6,
             img: 'https://i.ibb.co/VYJbQzv/Screenshot-2.png'
+        },
+        {
+            id: 7,
+            img: 'https://i.ibb.co/nRB3Bbf/maxresdefault.jpg '
+        },
+        {
+            id: 8,
+            img: 'https://i.ibb.co/GQ043KC/75609-425-materiel-concert.jpg'
+        },
+        {
+            id: 9,
+            img: 'https://i.ibb.co/HTJBPXt/pasted-image-0.png'
+        },
+        {
+            id: 10,
+            img: 'https://i.ibb.co/Yh1w6WH/Screenshot-1.png'
+        },
+        {
+            id:11,
+            img: 'https://i.ibb.co/VYJbQzv/Screenshot-2.png'
+        },
+        {
+            id: 12,
+            img: 'https://i.ibb.co/nRB3Bbf/maxresdefault.jpg '
+        },
+        {
+            id: 13,
+            img: 'https://i.ibb.co/GQ043KC/75609-425-materiel-concert.jpg'
+        },
+        {
+            id: 14,
+            img: 'https://i.ibb.co/HTJBPXt/pasted-image-0.png'
+        },
+        {
+            id: 15,
+            img: 'https://i.ibb.co/Yh1w6WH/Screenshot-1.png'
         }
     ]
+
+    const handleSeeAll=()=>{
+        setSeeAll(gallery.length)
+    }
+
+    const handleSeeLess=()=>{
+        setSeeAll(6)
+    }
 
 
     return (
@@ -34,28 +81,19 @@ const GallerySection = () => {
             <h1 className="text-center text-5xl py-20 font-bold">Discover Our Works</h1>
             <div className='grid grid-cols-3 gap-3'>
                 {
-                    gallery.map(one => {
+                    gallery.slice(0,seeAll).map(one => {
                         return (
                             <div key={one.id}>
                                 <div style={{ backgroundImage: `url(${one.img})` }}
-                                    className="h-[300px] bgx rounded-lg cursor-pointer" onClick={() => document.getElementById('my_modal_3').showModal()}>
+                                    className="h-[300px] bgx rounded-lg">
                                 </div>
-
-
-                                <dialog id="my_modal_3" className="modal">
-                                    <div className="modal-box">
-                                        <form method="dialog">
-                                            <button className="btn btn-sm btn-circle btn-ghost absolute right-1 top-1 bg-red-600 text-white">✕</button>
-                                        </form>
-                                        <img src={one.img} />
-                                    </div>
-                                </dialog>
-
-
                             </div>
                         )
                     })
                 }
+            </div>
+            <div className="flex justify-center mt-5">
+                {seeAll===6?<button onClick={handleSeeAll} className="btn btn-primary">See All</button>:<button onClick={handleSeeLess} className="btn btn-primary">See Less</button>}
             </div>
         </div>
     )

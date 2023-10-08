@@ -10,7 +10,7 @@ const capitalLetterRegex = /[A-Z]/;
 const Registration = () => {
 
     const location = useLocation()
-    const { createUser } = useContext(AuthContext)
+    const { createUser,setNotiSts, handleLogRegSuccess,updateUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
 
@@ -23,6 +23,8 @@ const Registration = () => {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [err, setErr] = useState('')
+    const [photo,setPhoto]=useState('')
+    const [name,setName]=useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -52,7 +54,18 @@ const Registration = () => {
 
         createUser(email, pass)
             .then(res => {
-                console.log(res);
+                
+
+                updateUser(res.user,name,photo)
+                .then(response=>{
+                    console.log(response);
+                }).catch(err=>{
+                    console.log(err);
+                })
+
+
+                handleLogRegSuccess("Successfully Register User !")
+                setNotiSts(true)
                 navigate(location?.state ? location.state : '/')
             }).catch(err => {
                 setErr(err.message)
@@ -64,6 +77,8 @@ const Registration = () => {
 
             setEmail('')
             setPass('')
+            setName('')
+            setPhoto('')
     }
 
     return (
@@ -78,9 +93,21 @@ const Registration = () => {
                     <h1 className="text-2xl text-center font-bold py-4">Registration Here</h1>
                     <div className="form-control">
                         <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input onChange={e => setName(e.target.value)} value={name} autoFocus name="name" type="text" placeholder="name" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input onChange={e => setEmail(e.target.value)} value={email} autoFocus name="email" type="email" placeholder="email" className="input input-bordered" required />
+                        <input onChange={e => setEmail(e.target.value)} value={email} name="email" type="email" placeholder="email" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Photo URL</span>
+                        </label>
+                        <input onChange={e => setPhoto(e.target.value)} value={photo} type="text" placeholder="photo url" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
