@@ -8,7 +8,7 @@ const OneCard = ({data}) => {
 
 
   return (
-    <div className="card text-black card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card text-black card-compact  bg-base-100 shadow-xl">
             <figure><img src={data.image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-red-600">{data.title}</h2>

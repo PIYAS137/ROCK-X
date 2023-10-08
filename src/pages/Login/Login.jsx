@@ -59,7 +59,7 @@ const Login = () => {
 
 
     return (
-        <div className="hero min-h-screen">
+        <div className="hero min-h-screen p-2 xl:p-0">
 
             {err && <div className="max-w-xl z-50 top-20 text-white text-xl absolute bg-red-500 w-full p-5 rounded-xl">
                 {err}

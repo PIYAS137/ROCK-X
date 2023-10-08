@@ -20,8 +20,8 @@ const GallerySection = () => {
 
     return (
         <div>
-            <h1 className="text-center text-5xl py-20 font-bold">Discover Our Works</h1>
-            <div className='grid grid-cols-3 gap-3'>
+            <h1 className="text-center text-4xl lg:text-5xl py-20 font-bold">Discover Our Works</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                 {
                     photos.slice(0, seeAll).map(one => {
                         return (

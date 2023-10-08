@@ -35,7 +35,7 @@ const ClientSection = () => {
   ]
   return (
     <div className="">
-      <h1 className="text-center text-5xl font-bold pt-40">We Love Our Clients</h1>
+      <h1 className="text-center text-4xl lg:text-5xl font-bold pt-40">We Love Our Clients</h1>
       <div className="my-10">
         <Marquee>
         {

@@ -7,7 +7,7 @@ const GalleryPage = () => {
 
 
     return (
-        <div>
+        <div className="p-2 xl:p-0">
 
 
 
