@@ -1,16 +1,20 @@
 import { useContext } from "react"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import { AuthContext } from "../Context/Context"
 
 const AppNavbar = () => {
 
     const { user,LogOutUser } = useContext(AuthContext)
-    console.log(user);
+    const navigate = useNavigate()
 
     const handleClickLogOut=()=>{
         LogOutUser()
         .then(res=>console.log(res))
         .catch(err=>console.log(err))
+    }
+    
+    const handleClickLogo=()=>{
+        navigate('/')
     }
 
     
@@ -18,6 +22,8 @@ const AppNavbar = () => {
     const NavLinks = <>
         <li className="text-lg"><NavLink to='/'>Home</NavLink></li>
         <li className="text-lg"><NavLink to='/services'>Services</NavLink></li>
+        <li className="text-lg"><NavLink to='/about'>About</NavLink></li>
+        <li className="text-lg"><NavLink to='/gallery'>Gallery</NavLink></li>
         <li className="text-lg"><NavLink to='/contact'>Contact</NavLink></li>
     </>
 
@@ -32,7 +38,7 @@ const AppNavbar = () => {
                         {NavLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-2xl">ROCK<span className="-ml-1 text-red-500">X</span></a>
+                <a onClick={handleClickLogo} className="btn btn-ghost normal-case text-2xl">ROCK<span className="-ml-1 text-red-500">X</span></a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

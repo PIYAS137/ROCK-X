@@ -5,11 +5,9 @@ import { AuthContext } from "../../Context/Context"
 
 const Login = () => {
 
-    const { LoginUser,LoginWithGoogle,setNotiSts, handleLogRegSuccess} = useContext(AuthContext)
+    const { LoginUser,setLoading,LoginWithGoogle,setNotiSts, handleLogRegSuccess} = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-
-
 
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
@@ -24,10 +22,12 @@ const Login = () => {
         LoginUser(email, pass)
             .then(res => {
                 console.log(res);
+                setLoading(false)
                 handleLogRegSuccess("Successfully Log In User !")
                 setNotiSts(true)
                 navigate(location?.state ? location.state : '/')
             }).catch(err => {
+                setLoading(false)
                 setErr(err.message);
                 setTimeout(()=>{
                     setErr('')
@@ -41,11 +41,13 @@ const Login = () => {
         LoginWithGoogle()
         .then(res=>{
             console.log(res);
+            setLoading(false)
             handleLogRegSuccess("Successfully Log In User !")
             setNotiSts(true)
             navigate(location?.state ? location.state : '/')
         }).catch(err=>{
             console.log(err);
+            setLoading(false)
             setErr(err.message);
             setTimeout(()=>{
                 setErr('')

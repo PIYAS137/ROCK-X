@@ -10,7 +10,7 @@ const capitalLetterRegex = /[A-Z]/;
 const Registration = () => {
 
     const location = useLocation()
-    const { createUser,setNotiSts, handleLogRegSuccess,updateUser } = useContext(AuthContext)
+    const { createUser,setNotiSts,setLoading, handleLogRegSuccess,updateUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
 
@@ -54,21 +54,20 @@ const Registration = () => {
 
         createUser(email, pass)
             .then(res => {
-                
-
                 updateUser(res.user,name,photo)
                 .then(response=>{
+                    setLoading(false)
                     console.log(response);
                 }).catch(err=>{
+                    setLoading(false)
                     console.log(err);
                 })
-
-
                 handleLogRegSuccess("Successfully Register User !")
                 setNotiSts(true)
                 navigate(location?.state ? location.state : '/')
             }).catch(err => {
                 setErr(err.message)
+                setLoading(false)
                 setTimeout(() => {
                     setErr('')
                 }, 2000)

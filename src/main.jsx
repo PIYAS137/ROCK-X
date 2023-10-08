@@ -11,6 +11,9 @@ import Registration from './pages/Registration/Registration'
 import Context from './Context/Context'
 import PrivateRoute from './PrivateRoute/PrivateRoute'
 import Contact from './pages/Contact/Contact'
+import About from './pages/About/About'
+import GalleryPage from './pages/Gallery/GalleryPage'
+import ViewOnePhoto from './pages/ViewOnePhoto/ViewOnePhoto'
 
 
 
@@ -42,6 +45,18 @@ const router = createBrowserRouter([
       {
         path:'/contact',
         element:<Contact/>
+      },
+      {
+        path:'/gallery',
+        element:<GalleryPage/>
+      },
+      {
+        path:'/gallery/:sid',
+        element:<PrivateRoute><ViewOnePhoto/></PrivateRoute>
+      },
+      {
+        path:'/about',
+        element:<PrivateRoute><About/></PrivateRoute>
       }
     ]
   }

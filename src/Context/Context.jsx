@@ -16,34 +16,40 @@ const GoogleProvider = new GoogleAuthProvider()
 const Context = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [logRegSucc,setLogRegSucc]=useState('');
-    const [notiSts,setNotiSts]=useState(false)
+    const [logRegSucc, setLogRegSucc] = useState('');
+    const [notiSts, setNotiSts] = useState(false)
 
 
-
-    const handleLogRegSuccess=(str)=>{
+    const handleLogRegSuccess = (str) => {
+        setLoading(true)
         setLogRegSucc(str);
-        setTimeout(()=>{
+        setTimeout(() => {
             setLogRegSucc('')
             setNotiSts(false)
-        },2000)
+        }, 3000)
     }
-
-
-
-
 
     const createUser = (email, pass) => {
         setLoading(true)
         return createUserWithEmailAndPassword(FirebaseAuth, email, pass);
     }
 
-    const updateUser=(val,name,photo)=>{
-        console.log(name,photo);
+    useEffect(() => {
+        const status = onAuthStateChanged(FirebaseAuth, (currentUser) => {
+            setLoading(false)
+            setUser(currentUser)
+        })
+        return () => {
+            status()
+        }
+    }, [user])
+
+    const updateUser = (val, name, photo) => {
+        console.log(name, photo);
         setLoading(true)
-        return updateProfile(val,{
-            displayName : name,
-            photoURL:photo
+        return updateProfile(val, {
+            displayName: name,
+            photoURL: photo
         })
     }
 
@@ -56,16 +62,6 @@ const Context = ({ children }) => {
         setLoading(true)
         return signOut(FirebaseAuth)
     }
-
-    useEffect(() => {
-        const status = onAuthStateChanged(FirebaseAuth, (currentUser) => {
-            setLoading(false)
-            setUser(currentUser)
-        })
-        return () => {
-            status()
-        }
-    }, [])
 
     const LoginWithGoogle = () => {
         setLoading(true)
@@ -83,7 +79,8 @@ const Context = ({ children }) => {
         logRegSucc,
         notiSts,
         setNotiSts,
-        updateUser
+        updateUser,
+        setLoading
     }
 
     return (
