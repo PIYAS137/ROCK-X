@@ -14,6 +14,7 @@ import Contact from './pages/Contact/Contact'
 import About from './pages/About/About'
 import GalleryPage from './pages/Gallery/GalleryPage'
 import ViewOnePhoto from './pages/ViewOnePhoto/ViewOnePhoto'
+import ErrorPage from './pages/ErrorPage/ErrorPage'
 
 
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement:<ErrorPage/>,
     children: [
       {
         path: '/',
