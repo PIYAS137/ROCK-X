@@ -16,7 +16,8 @@ const BannerSection = () => {
 
 
     return (
-        <div data-aos="fade-left" className="hero rounded-xl overflow-hidden my-10" style={{ backgroundImage: 'url(https://i.ibb.co/SndgNYm/texture-treble-clef-dark-background-isolated-generative-ai.jpg)' }}>
+        <div data-aos="fade-left" className="hero relative rounded-xl overflow-hidden my-10" style={{ backgroundImage: 'url(https://i.ibb.co/SndgNYm/texture-treble-clef-dark-background-isolated-generative-ai.jpg)' }}>
+            <img className="z-60 absolute -right-10 bottom-10 w-72" src="https://i.ibb.co/9wxcnQY/Pngtree-pretty-brown-guitar-illustration-4505412.png" alt="" />
             <div className="hero-overlay bg-opacity-80"></div>
             <div className="hero-content text-center text-neutral-content py-40">
                 <div className="max-w-md">
