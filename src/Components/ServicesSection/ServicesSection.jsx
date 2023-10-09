@@ -2,9 +2,12 @@ import  { useState } from 'react'
 import OneCard from './OneCard'
 import { MyServicesDatas } from '../../database/ServicesDatas'
 
+
 const ServicesSection = () => {
 
     const [cards,setCards]=useState(MyServicesDatas)
+
+
 
     
 

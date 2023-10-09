@@ -1,6 +1,18 @@
+import { useEffect } from "react";
 import Marquee from "react-fast-marquee";
+import Aos from 'aos'
+import 'aos/dist/aos.css';
+
 
 const ClientSection = () => {
+
+  useEffect(()=>{
+    Aos.init({
+        duration:1500,
+    })
+},[])
+
+
   const clients = [
     {
       id: 1,
@@ -34,7 +46,7 @@ const ClientSection = () => {
     }
   ]
   return (
-    <div className="">
+    <div className="" data-aos="zoom-out-down">
       <h1 className="text-center text-4xl lg:text-5xl font-bold pt-40">We Love Our Clients</h1>
       <div className="my-10">
         <Marquee>

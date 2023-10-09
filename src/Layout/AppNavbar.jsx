@@ -48,11 +48,12 @@ const AppNavbar = () => {
             <div className="navbar-end">
                 {
                 user ? 
-                <button onClick={handleClickLogOut} className="bg-red-500 text-white px-4 py-2 text-xs md:text-lg w-full rounded-lg font-semibold">Log Out</button>
+                <button onClick={handleClickLogOut} className="bg-red-500 text-white px-4 block py-2 text-xs md:text-lg rounded-lg font-semibold">Log Out</button>
                 : 
                 <Link to='/login'><button className="bg-indigo-500 text-white px-4 py-2 text-xs md:text-lg rounded-lg font-semibold">Login</button></Link> 
                 }
-                <p className="ml-2 text-red-500 text-xs">{user?.displayName}</p>
+                <p className="block md:hidden ml-2 text-white text-xs">{user?.displayName?.split(" ")?.slice(0,1)?.join(" ")}</p>
+                <p className="hidden md:block ml-2 text-white text-xs">{user?.displayName}</p>
                 <label tabIndex={0} className="btn ml-2 btn-ghost btn-circle avatar">
                     <div className="w-16 rounded-full bg-white p-[1px]">
                         <img className=" rounded-full" src={user?.photoURL ? user.photoURL : "https://i.ibb.co/tqWTNFt/Default-avatar-icon-vector-of-social-media-user.jpg"} />

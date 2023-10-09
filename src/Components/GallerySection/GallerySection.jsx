@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { galleryDatas } from "../../database/GalleryDatas";
 import { Link } from "react-router-dom";
+import Aos from 'aos'
+import 'aos/dist/aos.css';
 
 const GallerySection = () => {
 
@@ -16,6 +18,11 @@ const GallerySection = () => {
     const handleSeeLess = () => {
         setSeeAll(6)
     }
+    useEffect(()=>{
+        Aos.init({
+            duration:1500,
+        })
+    },[])
 
 
     return (
@@ -25,7 +32,7 @@ const GallerySection = () => {
                 {
                     photos.slice(0, seeAll).map(one => {
                         return (
-                            <div key={one.id}>
+                            <div key={one.id} data-aos="flip-up">
                                 <Link to={`/gallery/${one.id}`}>
                                     <div style={{ backgroundImage: `url(${one.img})` }}
                                         className="h-[300px] bgx rounded-lg">

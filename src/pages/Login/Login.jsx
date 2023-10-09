@@ -21,7 +21,6 @@ const Login = () => {
 
         LoginUser(email, pass)
             .then(res => {
-                console.log(res);
                 setLoading(false)
                 handleLogRegSuccess("Successfully Log In User !")
                 setNotiSts(true)

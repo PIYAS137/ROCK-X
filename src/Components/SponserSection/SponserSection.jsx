@@ -1,6 +1,16 @@
 import Marquee from "react-fast-marquee";
+import Aos from 'aos'
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const SponserSection = () => {
+
+  useEffect(()=>{
+    Aos.init({
+        duration:1500,
+    })
+},[])
+
   const sponsers = [
     {
       id: 1,
@@ -28,7 +38,7 @@ const SponserSection = () => {
     }
   ]
   return (
-      <div className=" text-5xl">
+      <div className=" text-5xl" data-aos="zoom-in">
         <h1 className="text-center font-bold pt-20">Our Sponsers</h1>
         <div className="flex my-10">
         <Marquee>
